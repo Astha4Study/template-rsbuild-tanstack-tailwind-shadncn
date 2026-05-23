@@ -6,7 +6,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'src/routeTree.gen.ts']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -19,6 +19,16 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+
+  // shadcn/ui
+  {
+    files: ['src/components/ui/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+
+  // TanStack Router
   {
     files: ['src/routes/**/*.tsx'],
     rules: {
